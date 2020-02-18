@@ -1,0 +1,21 @@
+version: 2.1
+
+jobs:
+  with-open:
+    docker:
+      - image: circleci/node:9.6.1
+    steps:
+      - run: echo ${hello}
+  with-restricted:
+    docker:
+      - image: circleci/node:9.6.1
+    steps:
+      - run: echo ${hello}
+
+workflows:
+  test:
+    jobs:
+      - with-open:
+          context: open
+      - with-restricted:
+          context: restricted
